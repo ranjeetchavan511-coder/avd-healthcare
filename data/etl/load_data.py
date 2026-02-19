@@ -184,7 +184,7 @@ config_df = read_config_file()
 
 for row in config_df.collect():
     if row["is_active"] == '1' and row["database"] == "healthcare": 
-        db, src, table, load_type, watermark, _, targetpath = row
+        db_instance, database, table, load_type, watermark, is_active = row
         extract_and_save_to_landing(table, load_type, watermark)
 
 save_logs_to_gcs()
