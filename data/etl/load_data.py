@@ -152,7 +152,7 @@ def extract_and_save_to_landing(table, load_type, watermark_col):
 
         # Insert Audit Entry (Always update audit log with current run info)
         audit_df = spark.createDataFrame([
-            ("hospital_db", table, load_type, record_count, datetime.datetime.now(), "SUCCESS")], 
+            ("healthcare", table, load_type, record_count, datetime.datetime.now(), "SUCCESS")], 
             ["data_source", "tablename", "load_type", "record_count", "load_timestamp", "status"])
 
         (audit_df.write.format("bigquery")
@@ -169,7 +169,7 @@ def extract_and_save_to_landing(table, load_type, watermark_col):
         
         # Insert Audit Entry with failure status
         audit_df = spark.createDataFrame([
-            ("hospital_db", table, load_type, 0, datetime.datetime.now(), "FAILURE")], 
+            ("healthcare", table, load_type, 0, datetime.datetime.now(), "FAILURE")], 
             ["data_source", "tablename", "load_type", "record_count", "load_timestamp", "status"])
 
         (audit_df.write.format("bigquery")
@@ -183,7 +183,7 @@ def extract_and_save_to_landing(table, load_type, watermark_col):
 config_df = read_config_file()
 
 for row in config_df.collect():
-    if row["is_active"] == '1' and row["database"] == "hospital_db": 
+    if row["is_active"] == '1' and row["database"] == "healthcare": 
         db, src, table, load_type, watermark, _, targetpath = row
         extract_and_save_to_landing(table, load_type, watermark)
 
