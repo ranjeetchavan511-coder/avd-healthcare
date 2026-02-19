@@ -16,5 +16,5 @@ options:
 
 substitutions:
   _DAGS_DIRECTORY: "airflow/"
-  _DAGS_BUCKET: " us-central1-avd-healthcare--2e52d4dd-bucket"
+  _DAGS_BUCKET: "us-central1-avd-healthcare--2e52d4dd-bucket"
   _DATA_DIRECTORY: "data/"
