@@ -13,24 +13,24 @@ storage_client = storage.Client()
 bq_client = bigquery.Client()
 
 # Google Cloud Storage (GCS) Configuration
-GCS_BUCKET = "avd-bucket-10"
+GCS_BUCKET = "healthcare_bucket10"
 HOSPITAL_NAME = "hospital"
 LANDING_PATH = f"gs://{GCS_BUCKET}/landing/{HOSPITAL_NAME}/"
 ARCHIVE_PATH = f"gs://{GCS_BUCKET}/landing/{HOSPITAL_NAME}/archive/"
 CONFIG_FILE_PATH = f"gs://{GCS_BUCKET}/configs/config.csv"
 
 # BigQuery Configuration
-BQ_PROJECT = "feisty-flow-466306-f6"
+BQ_PROJECT = "project-59b6a2e2-a888-44f9-a4a"
 BQ_AUDIT_TABLE = f"{BQ_PROJECT}.temp_dataset.audit_log"
 BQ_LOG_TABLE = f"{BQ_PROJECT}.temp_dataset.pipeline_logs"
 BQ_TEMP_PATH = f"{GCS_BUCKET}/temp/"  
 
 # MySQL Configuration
 MYSQL_CONFIG = {
-    "url": "jdbc:mysql://34.16.84.227:3306/hospital_db?useSSL=false&allowPublicKeyRetrieval=true",
+    "url": "jdbc:mysql://34.44.110.144:3306/healthcare",
     "driver": "com.mysql.cj.jdbc.Driver",
-    "user": "user1",
-    "password": "User1#1234"
+    "user": "rushi",
+    "password": "Rushi@123"
 }
 
 # Function to Read Config File from GCS
